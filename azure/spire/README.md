@@ -65,6 +65,17 @@ This configures the **SPIRE Agent**, which:
 
 This is a shell script that **registers a GitHub Action workflow** with SPIRE.
 
+📌 **What this does**:
+Creates a new SPIFFE ID for the GitHub Action
+Tells SPIRE: "If you see a process with UID 1001, assign it this identity"
+
+📌 **Why it's needed**:
+SPIRE only issues identities to registered workloads.
+Without this entry, no token will be issued.
+
+📌 **Where it's run**:
+On the SPIRE Server machine after the server is started.
+
 ```bash
 spire-server entry create \
   -spiffeID "spiffe://github/org/repo/azure-deploy" \
@@ -73,19 +84,4 @@ spire-server entry create \
   -ttl 3600
 
 
-📌 **What this does**:
-
-Creates a new SPIFFE ID for the GitHub Action
-
-Tells SPIRE: "If you see a process with UID 1001, assign it this identity"
-
-📌 Why it's needed:
-
-SPIRE only issues identities to registered workloads.
-
-Without this entry, no token will be issued.
-
-📌 Where it's run:
-
-On the SPIRE Server machine after the server is started.
 
