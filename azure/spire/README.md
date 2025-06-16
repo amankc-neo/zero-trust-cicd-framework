@@ -72,18 +72,20 @@ spire-server entry create \
   -parentID "spiffe://azure/agent/my-agent" \
   -ttl 3600
 
-### 📌 What this does:
+
+📌 **What this does**:
 
 Creates a new SPIFFE ID for the GitHub Action
 
 Tells SPIRE: "If you see a process with UID 1001, assign it this identity"
 
-### 📌 Why it's needed:
+📌 Why it's needed:
 
 SPIRE only issues identities to registered workloads.
 
 Without this entry, no token will be issued.
 
-### 📌 Where it's run:
+📌 Where it's run:
 
 On the SPIRE Server machine after the server is started.
+
