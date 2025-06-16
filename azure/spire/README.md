@@ -48,7 +48,7 @@ This file configures the **SPIRE Server**, which:
 ### 2. `spire-agent.conf`
 
 This configures the **SPIRE Agent**, which:
-- Runs alongside workloads (or in this case, mocks them)
+- Runs alongside workloads 
 - Attests to the SPIRE Server and retrieves identities
 - Communicates with workloads via Unix socket
 
@@ -57,7 +57,7 @@ This configures the **SPIRE Agent**, which:
 
 📌 **Where it's deployed**:
 - On the same host where the GitHub Action runner or VM executes.
-- It uses the `join_token` method to authenticate to SPIRE Server (simple for demo).
+- It uses the `join_token` method to authenticate to SPIRE Server.
 
 ---
 
