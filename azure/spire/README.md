@@ -84,6 +84,8 @@ spire-server entry create \
   -ttl 3600
 ```
 
+---
+
 ### Security & Best Practices
 Area	                              Recommendation
 SPIRE                               AuthN	Replace join_token with Azure MSI or TPM
@@ -91,6 +93,8 @@ Secrets	                            Never embed client secrets in workflows
 SPIFFE IDs	                        Use meaningful names for traceability
 Runtime isolation	                  Run SPIRE Agent in minimal VMs or containers
 Monitoring	                        Enable SPIRE logs and Vault audit logs
+
+---
 
 🔗 **Resources**
 
@@ -100,4 +104,5 @@ Monitoring	                        Enable SPIRE logs and Vault audit logs
 
 **Vault JWT Auth Method** : https://developer.hashicorp.com/vault/docs/auth/jwt
 
+---
 
