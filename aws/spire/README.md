@@ -89,7 +89,7 @@ IAM Role	            spiffe://aws/iam/github-deploy-role
 
 ---
 
-###🔗 References
+🔗 **References**
 
 **SPIFFE in AWS** : https://spiffe.io/docs/latest/spire/deploying/aws/
 
