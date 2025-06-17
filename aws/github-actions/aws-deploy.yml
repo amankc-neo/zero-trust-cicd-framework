@@ -36,3 +36,7 @@ jobs:
           VAULT_TOKEN: ${{ env.VAULT_TOKEN }}
         run: |
           curl -H "X-Vault-Token: $VAULT_TOKEN" $VAULT_ADDR/v1/secret/data/aws/github/deploy-params | jq
+
+# Uses spire-agent to fetch a JWT-SVID.
+# Authenticates to Vault using bound_subject = spiffe://aws/github/org/repo/aws-deploy.
+# Accesses secret at secret/data/aws/github/deploy-params.
