@@ -39,3 +39,38 @@ vault auth enable jwt
 ```
 
 **Enables the JWT Auth method on Vault, allowing Vault to validate JWT tokens (SVIDs) from SPIRE**
+
+---
+
+| Feature            | Benefit                                |
+| ------------------ | -------------------------------------- |
+| SPIFFE IDs         | Unforgeable identity for CI/CD         |
+| Vault + JWT Auth   | Short-lived, dynamic tokens            |
+| Policy-as-code     | GitOps-friendly, reviewable, auditable |
+| Zero-Secret Access | No secrets in GitHub Actions or VMs    |
+
+---
+
+### Security Practices
+
+1. Enable TLS on Vault listeners (not done here for simplicity)
+2. Use vault audit enable file to log token usage
+3.Rotate roles/policies using automation
+4. Use spiffe:// IDs for tight scoping (not just *)
+
+---
+
+### Test Locally
+
+vault server -config=vault-config.hcl
+export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_TOKEN='root'
+
+# Enable auth
+bash jwt-auth-enable.sh
+
+# Register policy and role
+bash vault-policy-write.sh
+bash vault-role-create.sh
+
+---
