@@ -90,8 +90,8 @@ Can be customized per repo or org.
 
 ### 📚 References
 
-Vault JWT Auth : https://developer.hashicorp.com/vault/docs/auth/jwt
-SPIFFE and Vault Integration : https://spiffe.io/blog/spiffe-jwt-vault/
-Vault Policies : https://developer.hashicorp.com/vault/docs/concepts/policies
+- Vault JWT Auth : https://developer.hashicorp.com/vault/docs/auth/jwt
+- SPIFFE and Vault Integration : https://spiffe.io/blog/spiffe-jwt-vault/
+- Vault Policies : https://developer.hashicorp.com/vault/docs/concepts/policies
 
 ---
