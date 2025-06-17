@@ -77,6 +77,6 @@ vault auth enable jwt
 
 ### 🔗 References
 
-Vault JWT Auth : https://developer.hashicorp.com/vault/docs/auth/jwt
-Vault Policies : https://developer.hashicorp.com/vault/docs/concepts/policies
-SPIFFE IDs in Vault : https://spiffe.io/blog/spiffe-jwt-vault/
+- Vault JWT Auth : https://developer.hashicorp.com/vault/docs/auth/jwt
+- Vault Policies : https://developer.hashicorp.com/vault/docs/concepts/policies
+- SPIFFE IDs in Vault : https://spiffe.io/blog/spiffe-jwt-vault/
