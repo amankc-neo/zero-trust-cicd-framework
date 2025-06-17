@@ -1,0 +1,11 @@
+{
+  "role_type": "jwt",
+  "user_claim": "sub",
+  "bound_subject": "spiffe://azure/github/org/repo/azure-deploy",
+  "bound_audiences": "vault",
+  "policies": ["github-actions"],
+  "ttl": "15m"
+}
+# bound_subject: SPIFFE ID the workflow receives from SPIRE
+# bound_audiences: ensures token is for Vault
+# ttl: security best practice for short-lived tokens
