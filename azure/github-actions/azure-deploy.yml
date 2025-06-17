@@ -1,0 +1,39 @@
+name: Azure Zero-Trust Deploy
+
+on:
+  push:
+    paths:
+      - 'azure/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Install SPIRE CLI
+        run: |
+          curl -sSL https://github.com/spiffe/spire/releases/download/v1.7.1/spire-cli-linux-x86_64.tar.gz | tar -xz
+          sudo mv spire-cli /usr/local/bin/spire-cli
+
+      - name: Fetch SPIFFE JWT-SVID
+        run: |
+          export SPIFFE_ENDPOINT_SOCKET=unix:///tmp/spire-agent.sock
+          spire-agent api fetch jwt -audience vault -socketPath $SPIFFE_ENDPOINT_SOCKET -output svid.jwt
+        id: spiffe
+
+      - name: Authenticate to Vault using JWT-SVID
+        env:
+          VAULT_ADDR: http://127.0.0.1:8200
+        run: |
+          VAULT_TOKEN=$(curl --request POST --data '{"jwt":"'"$(cat svid.jwt)"'","role":"github-actions"}' \
+            $VAULT_ADDR/v1/auth/jwt/login | jq -r '.auth.client_token')
+          echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
+
+      - name: Access Vault Secret
+        env:
+          VAULT_TOKEN: ${{ env.VAULT_TOKEN }}
+        run: |
+          curl -H "X-Vault-Token: $VAULT_TOKEN" $VAULT_ADDR/v1/secret/data/azure/github/deploy-params | jq
+
