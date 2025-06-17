@@ -62,15 +62,15 @@ vault auth enable jwt
 
 ### Test Locally
 
-vault server -config=vault-config.hcl
-export VAULT_ADDR='http://127.0.0.1:8200'
-export VAULT_TOKEN='root'
+- vault server -config=vault-config.hcl
+- export VAULT_ADDR='http://127.0.0.1:8200'
+- export VAULT_TOKEN='root'
 
 # Enable auth
-bash jwt-auth-enable.sh
+- bash jwt-auth-enable.sh
 
 # Register policy and role
-bash vault-policy-write.sh
-bash vault-role-create.sh
+- bash vault-policy-write.sh
+- bash vault-role-create.sh
 
 ---
